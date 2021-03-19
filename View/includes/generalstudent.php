@@ -54,10 +54,8 @@
                 </tbody>
             </table>
             <form class="create-form" method="post">
+                <input type="submit" name="view" value="create-new" class="btn btn-primary">
                 <input type="hidden" name="id" value="<?php echo $student['studentID']; ?>"/>
-                <a href="View/create.php" class="btn btn-primary" type="submit" name="create"
-                   value="<?php echo $student['studentID']; ?>">Create
-                    new</a>
             </form>
 
             <form class="export-form" method="post" name="studentcsv" action="Model/csv.php">

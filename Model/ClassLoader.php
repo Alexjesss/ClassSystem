@@ -14,7 +14,7 @@ class ClassLoader extends database
     public function getClassesInfo(): array
     {
         $pdo = $this->openConnection();
-        $handle = $pdo->prepare('select className, class.classID, location from class');
+        $handle = $pdo->prepare('select className, classID, location from class');
         $handle->execute();
         return $handle->fetchAll();
 

@@ -10,6 +10,7 @@ class StudentLoader extends database
         $handle->bindValue(':id', $id);
         $handle->execute();
         return $handle->fetch();
+
     }
 
     public function getUsersInfo(): array
@@ -20,14 +21,14 @@ class StudentLoader extends database
         return $handle->fetchAll();
     }
 
-    public function create($firstName, $lastName, $email, $className): void
+    public function create($firstName, $lastName, $email, $classID): void
     {
         $pdo = $this->openConnection();
-        $handle = $pdo->prepare('insert into student (firstName,lastName,email,className) values (:firstName,:lastName,:email, :className)');
+        $handle = $pdo->prepare('insert into student (firstName,lastName,email,classID) values (:firstName,:lastName,:email, :classID)');
         $handle->bindValue(':firstName', $firstName);
         $handle->bindValue(':lastName', $lastName);
         $handle->bindValue(':email', $email);
-        $handle->bindValue(':className', $className);
+        $handle->bindValue(':classID', $classID);
         $handle->execute();
     }
 
@@ -36,10 +37,10 @@ class StudentLoader extends database
         $pdo = $this->openConnection();
         $handle = $pdo->prepare('update student set firstName = :firstName, lastName = :lastName,email = :email, classID = :classID where studentID = :id');
         $handle->bindValue(':id', $id);
-        $handle->bindValue(':firstName', $firstName);
-        $handle->bindValue(':lastName', $lastName);
-        $handle->bindValue(':email', $email);
-        $handle->bindValue(':classID', $classID);
+        $handle->bindValue(':firstName', $_POST['firstName']);
+        $handle->bindValue(':lastName', $_POST['lastName']);
+        $handle->bindValue(':email', $_POST['email']);
+        $handle->bindValue(':classID', $_POST['classID']);
         $handle->execute();
     }
 
