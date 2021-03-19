@@ -1,4 +1,3 @@
-
 <section class="general-section justify-content-center">
 
     <!--<h4>Welcome to the general  page </h4>-->
@@ -26,8 +25,7 @@
                 </thead>
                 <tbody>
                 <?php
-                foreach ($students as $student):
-                    var_dump($student['studentID']);?>
+                foreach ($students as $student):?>
                     <tr class="clickable" data-href="#">
                         <td>
                             <div class="table-data">
@@ -61,14 +59,8 @@
             <form class="export-form" method="post" name="studentcsv" action="Model/csv.php">
                 <input class="btn export-button" type="submit" name="studentcsv" value="Export to CSV" />
             </form>
-            <form class="export-form" method="post" name="studentxml" action="Model/xml.php">
-                <input class="btn export-button" type="submit" name="studentcsv" value="Export to XML" />
 
-            </form>
         </div>
     </div>
 </section>
-
-
-
 

@@ -5,11 +5,11 @@ class TeacherLoader extends database
 
     public function getTeacherInfo($id): array
     {
-        $pdo = $this->openConnection()->prepare('SELECT * FROM teacher WHERE teacherID = :id');
+        $pdo = $this->openConnection();
+        $handle = $pdo->prepare('SELECT * FROM teacher left join class on teacher.teacherID = class.teacherID WHERE teacher.teacherID = :id');
         $handle->bindValue(':id', $id);
         $handle->execute();
-        $result =  $pdo->fetch();
-        return $result;
+        return $handle->fetch();
     }
 
     public function getTeachersInfo(): array
@@ -37,7 +37,7 @@ class TeacherLoader extends database
     public function delete($id): void
     {
         $pdo = $this->openConnection();
-        $handle = $pdo->prepare('delete from teacher where teacherID = :id');
+        $handle = $pdo->prepare('DELETE teacher FROM teacher LEFT JOIN class ON teacher.teacherID = class.teacherID WHERE className is null AND teacher.teacherID = :id');
         $handle->bindValue(':id', $id);
         $handle->execute();
     }

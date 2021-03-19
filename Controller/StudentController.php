@@ -10,7 +10,7 @@ class StudentController
         $classLoader = new ClassLoader();
         $students = $loader->getUsersInfo();
 
-      if (isset($_POST['delete'])) {
+        if (isset($_POST['delete'])) {
             $loader->delete($_POST['id']);
             echo 'Your record has been deleted';
         }
@@ -34,10 +34,16 @@ class StudentController
                 require 'View/edit.php';
             }
             elseif ($_POST['view'] === 'create-new') {
+<<<<<<< HEAD
                // $student = $loader->create($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['className']);
                 require 'View/create.php';
             }
+=======
+                // $student = $loader->create($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['className']);
+                require 'View/create.php';
+>>>>>>> 9f7f2333c144fe7ae732902a80ef16f4b1fc7afd
             }
+        }
         else {
             require 'View/student-view.php';
         }

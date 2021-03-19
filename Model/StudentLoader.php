@@ -28,7 +28,11 @@ class StudentLoader extends database
         $handle->bindValue(':firstName', $firstName);
         $handle->bindValue(':lastName', $lastName);
         $handle->bindValue(':email', $email);
+<<<<<<< HEAD
         $handle->bindValue(':classID', $classID);
+=======
+        $handle->bindValue(':className', $classID);
+>>>>>>> 9f7f2333c144fe7ae732902a80ef16f4b1fc7afd
         $handle->execute();
     }
 
